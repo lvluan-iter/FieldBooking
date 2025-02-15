@@ -2,14 +2,11 @@ package com.ueh.fieldbooking.dtos;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import lombok.*;
+import lombok.Getter;
 
 @Getter
-public class LoginRequest {
-    @NotBlank
+public class ForgotPasswordRequest {
     @Email
-    private String email;
-
     @NotBlank
-    private String password;
+    private String email;
 }

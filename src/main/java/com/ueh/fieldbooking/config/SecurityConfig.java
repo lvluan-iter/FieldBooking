@@ -2,6 +2,7 @@ package com.ueh.fieldbooking.config;
 
 import com.ueh.fieldbooking.components.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -31,6 +32,11 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
     }
 
     @Bean

@@ -1,10 +1,10 @@
 package com.ueh.fieldbooking.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Getter
@@ -15,36 +15,24 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "fields")
 public class Field {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "owner_id", nullable = false)
-    private User owner;
-
-    @NotNull
-    @Size(min = 3, max = 100)
+    @Column(nullable = false)
     private String name;
 
-    @NotNull
+    @Column(nullable = false)
     private String address;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type", nullable = false)
-    private FieldType type;
+    @ManyToOne
+    @JoinColumn(name = "type_id")
+    private Type type;
 
-    @NotNull
-    @Min(0)
-    @Column(name = "price_per_hour")
-    private Double pricePerHour;
+    @Column(name = "price_per_hour", nullable = false, precision = 10, scale = 2)
+    private BigDecimal pricePerHour;
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
-
-    public enum FieldType {
-        FOOTBALL, BADMINTON, TENNIS, BASKETBALL
-    }
 }
