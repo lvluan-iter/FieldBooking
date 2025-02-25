@@ -13,6 +13,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -86,6 +87,13 @@ public class FieldService {
         Field field = fieldRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Field not found with id: " + id));
         fieldRepository.delete(field);
+    }
+
+    public List<FieldResponse> searchField(String key) {
+        List<Field> fields = fieldRepository.searchFields(key);
+        return fields.stream()
+                .map(this::mapToResponse)
+                .collect(Collectors.toList());
     }
 
     private FieldResponse mapToResponse(Field field) {

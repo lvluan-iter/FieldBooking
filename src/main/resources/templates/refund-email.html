@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông báo hoàn điểm</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f4f7fc;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            border-top: 5px solid #2C3E50;
+        }
+        .header {
+            background: linear-gradient(135deg, #2C3E50, #34495E);
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+        .header h1 {
+            color: #ffffff;
+            font-size: 24px;
+            margin: 0;
+            font-weight: 600;
+        }
+        .content {
+            padding: 20px;
+            font-size: 16px;
+            color: #333;
+            line-height: 1.6;
+            text-align: left;
+        }
+        .highlight {
+            color: #2C3E50;
+            font-weight: 600;
+        }
+        .button {
+            text-align: center;
+            margin-top: 25px;
+        }
+        .button a {
+            background: #2C3E50;
+            color: #ffffff;
+            padding: 14px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            display: inline-block;
+            transition: 0.3s ease-in-out;
+            font-size: 15px;
+            box-shadow: 0 4px 10px rgba(44, 62, 80, 0.2);
+        }
+        .button a:hover {
+            background: #1A252F;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(44, 62, 80, 0.3);
+        }
+        .footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 25px;
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🎉 Hoàn Điểm Thành Công!</h1>
+    </div>
+    <div class="content">
+        <p>Xin chào <span class="highlight" th:text="${userName}"></span>,</p>
+        <p>Chúng tôi xin thông báo rằng bạn đã được hoàn lại <span class="highlight" th:text="${refundPoints}"></span> điểm
+            do hủy đơn đặt sân vào ngày <span class="highlight" th:text="${bookingDate}"></span>.</p>
+        <p>Điểm này đã được cộng vào tài khoản của bạn và có thể dùng để đặt sân trong lần tiếp theo.</p>
+        <div class="button">
+            <a th:href="${websiteUrl}">🔍 Xem chi tiết</a>
+        </div>
+        <p>Nếu có thắc mắc, hãy liên hệ với chúng tôi qua email hoặc hotline hỗ trợ.</p>
+        <p><strong>🏆 Đội ngũ hỗ trợ Đặt Sân UEH</strong></p>
+    </div>
+    <div class="footer">
+        <p>&copy; 2025 Đặt Sân UEH. Mọi quyền được bảo lưu.</p>
+        <p>📧 Email: support@datsanueh.com | 📞 Hotline: 0123 456 789</p>
+    </div>
+</div>
+</body>
+</html>

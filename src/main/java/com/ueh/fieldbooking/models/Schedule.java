@@ -2,11 +2,9 @@ package com.ueh.fieldbooking.models;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -39,10 +37,6 @@ public class Schedule {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Status status = Status.AVAILABLE;
-
-    @CreationTimestamp
-    @Column(name = "created_at", updatable = false)
-    private LocalDateTime createdAt;
 
     public enum Status {
         AVAILABLE, BOOKED

@@ -48,4 +48,10 @@ public class FieldController {
         fieldService.deleteField(id);
         return ResponseEntity.ok(new ApiResponse(200, "Field deleted successfully!"));
     }
+
+    @GetMapping("/search")
+    public ResponseEntity<?> searchField(@RequestParam("key") String key) {
+        List<FieldResponse> responses = fieldService.searchField(key);
+        return ResponseEntity.ok(responses);
+    }
 }

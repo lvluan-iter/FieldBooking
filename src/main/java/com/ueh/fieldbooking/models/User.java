@@ -34,6 +34,9 @@ public class User {
     @Column(name = "role", nullable = false)
     private Role role;
 
+    @Column(nullable = false, columnDefinition = "INTEGER DEFAULT 0")
+    private Integer score;
+
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
